@@ -144,7 +144,8 @@ The archive name can also be `-` which means STDOUT. This way you can send the a
 
 There is actually a shorthand for that though:
 
-    tar cjfp ~/lean-rhcsa.tar.bz2 ~/lean-rhcsa/manuscript ~/lean-rhcsa/assets
+    tar cjfp ~/lean-rhcsa.tar.bz2 ~/lean-rhcsa/manuscript \
+        ~/lean-rhcsa/assets
 
 This will do exactly the same, but is a little simpler.
 
