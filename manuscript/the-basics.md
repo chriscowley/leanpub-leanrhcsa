@@ -122,14 +122,14 @@ sudo firewall-cmd --reload
 
 The basic compression format in RHEL is the `tar` file, which stands for *Tape ARchive*. Unsurprisingly, this dates back to the days when one would backup your files to a tape (which does still happen). Tar has no concept of compression, all it does is create an archive. The format is:
 
-    tar [options] <archive-name> <files>
+    tar <options> <archive-name> <files>
 
 So a simple example would be:
 
 
     tar cpf ~/lean-rhcsa.tar ~/lean-rhcsa/manuscript ~/lean-rhcsa/assets
 
-The above command creates an archive at the root of my home directory (`~/lean-rhcsa-backup.tar`) that contains the folders for my manuscript and the associated assets for this book. The options are very simple:
+The above command creates an archive at the root of my home directory (~/lean-rhcsa.tar) that contains the folders for my manuscript and the associated assets for this book. The options are very simple:
 
    - `c` create an archive
    - `f` which file to create
