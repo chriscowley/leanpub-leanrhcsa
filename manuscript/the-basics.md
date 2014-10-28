@@ -117,9 +117,47 @@ sudo firewall-cmd --reload
 
 ## Log in and switch users in multiple runlevels
 
+
 ## Archiving/Compressing files
 
+The basic compression format in RHEL is the `tar` file, which stands for *Tape ARchive*. Unsurprisingly, this dates back to the days when one would backup your files to a tape (which does still happen). Tar has no concept of compression, all it does is create an archive. The format is:
+
+    tar [options] <archive-name> <files>
+
+So a simple example would be:
+
+
+    tar cpf ~/lean-rhcsa.tar ~/lean-rhcsa/manuscript ~/lean-rhcsa/assets
+
+The above command creates an archive at the root of my home directory (`~/lean-rhcsa-backup.tar`) that contains the folders for my manuscript and the associated assets for this book. The options are very simple:
+
+   - `c` create an archive
+   - `f` which file to create
+   - `p` preserve permissions
+
+The archive name can also be `-` which means STDOUT. This way you can send the archive to another program, such as a compressor. In order to compress the archive with `bzip2` you can run:
+
+
+    tar cfp - ~/lean-rhcsa/manuscript ~/lean-rhcsa/assets | \
+        bzip2 > ~/lean-rhcsa.tar.bz2
+
+
+There is actually a shorthand for that though:
+
+    tar cjfp ~/lean-rhcsa.tar.bz2 ~/lean-rhcsa/manuscript ~/lean-rhcsa/assets
+
+This will do exactly the same, but is a little simpler.
+
+A> ## File compressors {#file-compressors}
+A> When piping you can use pretty much any compressor available.
+A>
+A> Personally I tend towards `bzip2` as it is good balance of speed and compression. Modern versions also have pretty good multi-threading.
+A>
+A> There is also `gz` which uses the zip algorithm. It is less CPU intensive, but also less efficient. This *may* be perferable on really low power systems (an older ARM SoC for example). On modern Intel/AMD systems the processing time saved is barely measurable most of the time.
+
 ## Creating and editing text files
+
+
 
 ## Manipulating files and directories
 
