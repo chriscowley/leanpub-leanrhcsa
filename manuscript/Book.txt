@@ -1,0 +1,8 @@
+introduction.md
+the-basics.md
+operating-a-system.md
+local-storage.md
+file-systems.md
+configure-systems.md
+users-and-groups.md
+using-my-templates.md

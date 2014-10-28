@@ -1,0 +1,5 @@
+http://wiki.bash-hackers.org/syntax/redirection
+http://mywiki.wooledge.org/BashGuide
+
+http://www.regular-expressions.info/quickstart.html
+https://en.wikipedia.org/wiki/Regular_expression
