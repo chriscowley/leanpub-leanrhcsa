@@ -70,7 +70,7 @@ If you want to search for any of the above characters then you need to *escape* 
 ### SSH
 For accessing remote servers, SSH is with out a doubt the standard. It is installed and enabled by default on RHEL - the firewall is even open on the correct port (22 tcp) too.
 
-SSH stands for *Secure SHell", even though it is not actually a shell in itself. It is just a way of encrypting a connection to a shell (such as bash). You connect to 
+SSH stands for *Secure SHell*, even though it is not actually a shell in itself. It is just a way of encrypting a connection to a shell (such as bash). You connect to 
 
 ### VNC
 *Virtual Networking Computing* is a way to access a GUI on a remote server.
@@ -83,25 +83,19 @@ Configuring VNC comes in 2 stages:
 
 Since RHEL6 the package has been called *tigervnc-server*, so to install simply run:
 
-```
-sudo yum install tigervnc-server
-```
+    sudo yum install tigervnc-server
 
 All the configuration is on `/etc/sysconfig/vncservers`. Add the following:
 
-```
-VNCSERVERS="1:bob"
-VNCSERVERARGS[1]="-geometry 1280x800"
-```
+    VNCSERVERS="1:bob"
+    VNCSERVERARGS[1]="-geometry 1280x800"
 
 Each VNC server has its own password. Incidentally, that is one of my personal beefs with VNC, but that is an aside. To set the password run `vncpassword`, which will create the file `~/.vnc/passwd`
 
 Finally start the service and configure it to start on boot:
 
-```
-sudo chkconfig vncserver on
-sudo service chkconfig start
-```
+    sudo chkconfig vncserver on
+    sudo service chkconfig start
 
 The first time you run this, it will actually create a startup script (`~/.vnc/xstartup`) which will look like:
 
@@ -109,10 +103,8 @@ The first time you run this, it will actually create a startup script (`~/.vnc/x
 
 Finally, you need to open out up the firewall to allow to you access it. VNC requires a single TCP port per server and each user has their own server. By default this will start at 5901 and continue upwards.
 
-```
-sudo firewall-cmd --permanent --add-port=5901/tcp
-sudo firewall-cmd --reload
-```
+    sudo firewall-cmd --permanent --add-port=5901/tcp
+    sudo firewall-cmd --reload
 
 
 ## Log in and switch users in multiple runlevels
